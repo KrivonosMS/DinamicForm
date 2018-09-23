@@ -73,8 +73,8 @@ Ext.onReady(function(){
 	
 	var createRequestForm = function(data) {
 		var index = requestPanel.items.length;
-		for (var i = 1; i < index -1; i++) {
-			requestPanel.remove(1);
+		for (var i = 0; i < index- 1; i++) {
+			requestPanel.remove(0);
 		};
 		
 		for (var key in data) {
@@ -253,45 +253,14 @@ Ext.onReady(function(){
 				xtype: 'button',
 				text: 'Send',
 				handler: function() {
-<<<<<<< .mine
-				Ext.Ajax.request({
-					url: 'json/answer.json',
-					//method: 'GET',
-					params: requestPanel.getValues(),
-					success: function (response, action) {
-						Ext.getCmp('answerArea').setValue(Ext.decode(response.responseText).answer);
-					},
-					failure: function (response, action) {
-						alert(response.responseText);
-					}
-				});
-            }
-			}]
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 					Ext.Ajax.request({
-						url: Ext.getCmp('server').getValue().link,
-						method: 'GET',
-						cors: true,
-						useDefaultXhrHeader : false,
+						url: 'json/answer.json',
 						params: requestPanel.getValues(),
 						success: function (response, action) {
 							Ext.getCmp('answerArea').setValue(Ext.decode(response.responseText).answer);
 						},
-						failure: function (form, action) {
-							Ext.MessageBox.alert('Error', response.responseStatus);
+						failure: function (response, action) {
+							alert(response.responseText);
 						}
 					});
 				}
@@ -307,7 +276,6 @@ Ext.onReady(function(){
 				text: 'Save to store',
 				handler: addFormParamsToLocalStorage
 		 	}]
->>>>>>> .theirs
 		}]
 	});
 	
